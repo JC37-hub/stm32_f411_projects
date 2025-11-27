@@ -1,77 +1,56 @@
-🔴 STM32F411 — Proyecto Blink
-
+# 🔴 STM32F411 — Proyecto Blink
 Encendido y apagado de un LED usando retardos bloqueantes (HAL_Delay).
 
-📌 Descripción
+## 📌 Descripción
+Este proyecto implementa el ejemplo clásico Blink usando una placa BlackPill STM32F411CEU6.
+El LED conectado al pin configurado en CubeMX se enciende y apaga periódicamente mediante HAL_Delay.
 
-Este proyecto implementa el clásico ejemplo Blink utilizando una placa BlackPill STM32F411CEU6.
-El LED conectado al pin configurado en CubeMX se enciende y apaga periódicamente usando retardos simples (HAL_Delay).
+Ideal para:
+- Verificar toolchain y carga del firmware
+- Validar reloj, GPIO y configuración inicial
+- Introducirse al flujo CubeMX + HAL
 
-Es un ejercicio ideal para:
+## 🛠️ Hardware utilizado
+- STM32F411CEU6 (BlackPill)
+- 1 LED externo (o LED onboard si tu placa lo incluye)
+- 1 resistencia si usas LED externo
 
-verificar toolchain
+## ⚙️ Configuración en STM32CubeMX
 
-probar programación de la placa
+### Reloj
+HSE → PLL → 100 MHz (frecuencia típica de la BlackPill)
 
-validar configuración de reloj y pines
+### GPIO
+| Periférico | Pin (ejemplo) | Modo        | Estado inicial |
+|------------|---------------|-------------|----------------|
+| LED        | PA5           | GPIO_Output | LOW            |
 
-iniciarse en el flujo HAL + CubeMX
+## 🧩 Funcionamiento
+En el bucle principal se alterna el estado del LED usando un retardo bloqueante.  
+Ejemplo de la lógica principal:
 
-🛠️ Hardware utilizado
+    HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
+    HAL_Delay(500);   // Parpadeo de ~1 Hz
 
-STM32F411CEU6 (BlackPill)
+Efecto:
+- Parpadeo constante
+- Código simple pero bloqueante (no adecuado para multitarea real)
 
-1 LED externo (o el LED onboard si la placa lo tiene)
-
-1 resistencia (si se usa LED externo)
-
-⚙️ Configuración en STM32CubeMX
-Reloj
-
-HSE → PLL → 100 MHz (típico para BlackPill)
-
-GPIO
-Periférico	Pin	Modo	Estado inicial
-LED	Ej: PA5	GPIO_Output	LOW
-🧩 Funcionamiento
-
-El programa principal ejecuta un ciclo infinito:
-
-HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-HAL_Delay(500); // 500 ms
-
-
-Esto provoca:
-
-1 Hz de parpadeo (aprox.)
-
-Código completamente bloqueante
-→ Ideal para comenzar
-→ No recomendado para aplicaciones complejas
-
-📂 Estructura del proyecto
-stm32_f411_blink_base/
+## 📂 Estructura del proyecto
+blink/
  ├── Core/
  ├── Drivers/
- ├── .project files...
- └── README.md   ← este archivo
+ ├── archivos generados por CubeMX
+ └── README.md
 
-🎯 Objetivos de aprendizaje
+## 🎯 Objetivos de aprendizaje
+- Configurar un GPIO como salida
+- Usar HAL_Delay correctamente
+- Comprobar funcionamiento básico del microcontrolador
+- Primer paso antes de timers, interrupciones o PWM
 
-✔ Configurar un GPIO de salida
-✔ Entender el uso de HAL_Delay
-✔ Probar la carga del firmware vía ST-Link
-✔ Confirmar que la toolchain está correcta
-✔ Primer paso antes de secuencias, timers o interrupciones
-
-🚀 Siguientes pasos recomendados
-
-Después de Blink, puedes avanzar a:
-
-🟡 Blink no bloqueante usando Timers
-
-🟢 Contador binario con 3 LEDs
-
-🔵 Interrupciones por botón
-
-⚙️ PWM básico
+## 🚀 Siguientes pasos recomendados
+- Blink no bloqueante usando un Timer
+- Secuencia de 3 LEDs
+- Interrupciones por botón
+- PWM básico
