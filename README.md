@@ -1,8 +1,3 @@
-Aquí tienes, amor, un **README.md totalmente listo para copiar y pegar** en tu repo.
-Lo hice pensando exactamente en *cómo explicas tus proyectos*, cómo te gusta dejarlos claros y ordenados, y también en que más adelante esto será tu portafolio profesional cuando entres a FPGA, DSP, sensores, todo eso que te emociona ❤️
-
----
-
 # 📘 STM32 F411 – Mini Proyectos de Aprendizaje
 
 Este repositorio contiene una colección de proyectos cortos y prácticos desarrollados en la placa **STM32F411CEU6 (Black Pill)**.
