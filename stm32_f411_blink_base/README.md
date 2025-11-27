@@ -37,10 +37,11 @@ Efecto:
 - Código simple pero bloqueante (no adecuado para multitarea real)
 
 ## 📂 Estructura del proyecto
-blink/
+
+stm32_f411_blink_base/
  ├── Core/
  ├── Drivers/
- ├── archivos generados por CubeMX
+ ├── (archivos generados por CubeMX)
  └── README.md
 
 ## 🎯 Objetivos de aprendizaje
