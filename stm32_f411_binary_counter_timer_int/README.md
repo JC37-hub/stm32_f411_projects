@@ -68,22 +68,36 @@ else HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_RESET);
 
 ---
 
-## ⚙️ Configuración del Timer 3 (TIM3)
+## 💡 Secuencia del Contador
 
-El timer genera una interrupción periódica según:
+| Conteo | Binario | LED1 | LED2 | LED3 |
+|--------|---------|------|------|------|
+| 0 | 000 | OFF | OFF | OFF |
+| 1 | 001 | OFF | OFF | ON |
+| 2 | 010 | OFF | ON | OFF |
+| 3 | 011 | OFF | ON | ON |
+| 4 | 100 | ON | OFF | OFF |
+| 5 | 101 | ON | OFF | ON |
+| 6 | 110 | ON | ON | OFF |
+| 7 | 111 | ON | ON | ON |
 
-- **Prescaler = 9999**  
-- **Periodo = 2499**  
-- **Clock interno = 96 MHz**
+---
 
-Esto produce una interrupción aproximada de:
+## 🧮 Cálculo del Timer
 
-```
-Frecuencia = 96MHz / (9999 + 1) / (2499 + 1)
-≈ 4 Hz
-```
+- SYSCLK = 100 MHz  
+- APB1 prescaler ÷2 → PCLK1 = 50 MHz  
+- TIM3CLK = 50 MHz
 
-Es decir, el contador cambia unas **4 veces por segundo**.
+Queremos: 0.5 segundos
+
+PSC = 9999  
+ARR = 2499
+
+Tiempo = (PSC+1)/TIM3CLK × (ARR+1)  
+Tiempo = (10000 / 50,000,000) × 2500 = 0.5 s ✔
+
+
 
 Inicialización del Timer:
 
