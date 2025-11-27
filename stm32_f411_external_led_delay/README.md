@@ -13,7 +13,7 @@ Es un ejemplo básico para practicar:
 ## 📁 Estructura del proyecto
 
 ```txt
-Three_LEDs_Sequence/
+stm32_f411_external_led_delay/
 ├── Core/
 │   ├── Inc/        # Headers
 │   └── Src/        # Código fuente principal (main.c)
@@ -66,7 +66,7 @@ El sistema usa:
 
 - Oscilador externo **HSE**
 - PLL activado
-- Frecuencia final: **96 MHz**
+- Frecuencia final: **100 MHz**
 
 Esto permite una ejecución estable del delay.
 
