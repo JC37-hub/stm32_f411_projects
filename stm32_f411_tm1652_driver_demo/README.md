@@ -65,6 +65,6 @@ Cada demo está diseñada para ser rápida y visualmente atractiva.
 
 ## 🌟 Reconocimientos
 
-👓 
+## 👓 
 
 
